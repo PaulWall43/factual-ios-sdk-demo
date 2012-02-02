@@ -3,7 +3,7 @@
 //  TableSearch
 //
 //  Created by Ahad Rana on 1/31/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Factual Inc. All rights reserved.
 //
 
 #import "LatLngSelector.h"

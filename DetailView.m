@@ -3,7 +3,7 @@
 //  TableSearch
 //
 //  Created by Ahad Rana on 1/27/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Factual Inc. All rights reserved.
 //
 
 #import "DetailView.h"

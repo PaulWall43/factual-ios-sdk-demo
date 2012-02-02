@@ -1,7 +1,10 @@
-
-/*
-
- */
+//
+//  AppDelegate.m
+//  TableSearch
+//
+//  Created by Ahad Rana on 1/31/12.
+//  Copyright (c) 2012 Factual Inc. All rights reserved.
+//
 
 #import "AppDelegate.h"
 #import "MainViewController.h"

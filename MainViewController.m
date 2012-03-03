@@ -96,7 +96,7 @@
   _searchBar.showsCancelButton = YES;
   _searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
   _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-  _searchBar.spellCheckingType = UITextSpellCheckingTypeNo;
+  // _searchBar.spellCheckingType = UITextSpellCheckingTypeNo;
   _searchBar.showsSearchResultsButton = YES;
   _searchBar.searchResultsButtonSelected = YES;
   _searchBar.delegate = self;

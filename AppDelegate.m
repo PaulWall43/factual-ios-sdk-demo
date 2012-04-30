@@ -33,8 +33,9 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
+  #error Please specify your API Key and Secret to build the project.
   // initialize the factual api object ... 
-  _apiObject = [[FactualAPI alloc] initWithAPIKey:@"kjXqlcGgeAtN0soG4HUWRk0211rpN5ihIkJZtJAs" secret:@"MjpuFM742hxwHrKPNtHFotxtkieBXUhCwJCHaEFo"];
+  _apiObject = [[FactualAPI alloc] initWithAPIKey:@"" secret:@""];
 	
 	// Create and configure the main view controller.
 	mainViewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];

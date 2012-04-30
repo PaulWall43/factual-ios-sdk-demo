@@ -437,6 +437,15 @@
   if (_activeRequest == request) {
     [_activeRequest release];
     _activeRequest = nil;
+    UIAlertView* alertView = [[[UIAlertView alloc] 
+     initWithTitle:@"Factual API Error" 
+     message:[error localizedDescription] 
+     delegate:self 
+                               cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
+    
+    [alertView show];
+    
+    
     NSLog(@"Active request failed with Error:%@", [error localizedDescription]);
     [self updateStatusBar:NO gpsStatusTxt:nil apiStatusTxt:[NSString stringWithFormat:@"Failed:%@",[error localizedDescription]]];
   }

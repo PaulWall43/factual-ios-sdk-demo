@@ -7,6 +7,8 @@
 //
 
 #import "DetailView.h"
+#import "FlagView.h"
+
 
 @implementation DetailView
 
@@ -42,15 +44,32 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)flag:(id)source
+{
+    FlagView *flagView = [[FlagView alloc] init];
+    
+    [self.navigationController pushViewController:flagView animated:YES];
+    [flagView release];
+
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
+    [super viewDidLoad];
   
-  if (self.row != nil) {     
-    [self.tableView reloadData];
-  }
+    if (self.row != nil) {     
+        [self.tableView reloadData];
+    }
+    
+    UIBarButtonItem *flagButton = [[UIBarButtonItem alloc] initWithTitle:@"Flag"
+                style:UIBarButtonItemStylePlain 
+                target:self 
+                action:@selector(flag:)];
+    flagButton.tintColor = [UIColor redColor];
+    [[self navigationItem] setRightBarButtonItem:flagButton];
+    [flagButton release];
 }
 
 - (void)viewDidUnload

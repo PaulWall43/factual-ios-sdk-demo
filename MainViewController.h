@@ -32,7 +32,7 @@
   BOOL _refreshRequired;
 }
 
-
+@property (nonatomic)         NSMutableDictionary* prefs;
 @property (nonatomic, copy)   NSString *savedSearchTerm;
 @property (nonatomic) BOOL    searchWasActive;
 @property (nonatomic,retain)  UISearchBar* searchBar;
@@ -40,6 +40,6 @@
            
 -(IBAction) doQuery:(id) sender;
 -(IBAction) doEditPreferences:(id) sender;
-
+-(NSString*) currentTable;
 
 @end

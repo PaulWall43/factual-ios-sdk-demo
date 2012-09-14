@@ -10,8 +10,7 @@
 #import "LatLngSelector.h"
 
 NSString * const PREFS_FACTUAL_TABLE = @"factual_table";
-NSString * const PLACES_TABLE_DESC = @"Global Places";
-NSString * const RESTAURANTS_TABLE_DESC = @"US Restaurants";
+NSString * const SANDBOX_TABLE_DESC = @"US POI Sandbox";
 
 NSString * const PREFS_GEO_ENABLED = @"enable_geo";
 NSString * const PREFS_TRACKING_ENABLED = @"enable_track";
@@ -256,7 +255,7 @@ static NSString* topLevelCategories[] = {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   if (section == 0) { 
-    return 2;
+    return 1;
   }
   else { 
     return 1;
@@ -279,14 +278,8 @@ static NSString* topLevelCategories[] = {
     cell.accessoryType = UITableViewCellAccessoryNone;
 
     if (indexPath.row == 0) { 
-      cell.textLabel.text = PLACES_TABLE_DESC;
+      cell.textLabel.text = SANDBOX_TABLE_DESC;
       if (selectedTableIndex == 0) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-      }
-    }
-    else if (indexPath.row == 1) { 
-      cell.textLabel.text = RESTAURANTS_TABLE_DESC;
-      if (selectedTableIndex == 1) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
       }
     }

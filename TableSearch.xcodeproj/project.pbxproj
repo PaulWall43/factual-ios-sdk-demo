@@ -12,7 +12,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		251D558714D8092900FE265A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251D558614D8092900FE265A /* MapKit.framework */; };
 		251D55ED14D822BB00FE265A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251D55EC14D822BB00FE265A /* CoreLocation.framework */; };
-		251D560414D9418200FE265A /* FactualSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251D560314D9418200FE265A /* FactualSDK.framework */; };
+		251D560414D9418200FE265A /* FactualSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251D560314D9418200FE265A /* FactualSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		251D560C14D9DA5600FE265A /* CLLocation (Strings).m in Sources */ = {isa = PBXBuildFile; fileRef = 251D560B14D9DA5600FE265A /* CLLocation (Strings).m */; };
 		251D561914DA525900FE265A /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251D561314DA525900FE265A /* DetailView.xib */; };
 		251D561A14DA525900FE265A /* LatLngSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251D561514DA525900FE265A /* LatLngSelector.xib */; };
@@ -32,7 +32,33 @@
 		7E3705A911CAC39100F5DB11 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E3705A411CAC39100F5DB11 /* Icon.png */; };
 		7E3705AA11CAC39100F5DB11 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E3705A511CAC39100F5DB11 /* Icon@2x.png */; };
 		7E3705AB11CAC39100F5DB11 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E3705A611CAC39100F5DB11 /* iTunesArtwork.png */; };
+		E1BD1BC715DB2D5A00E763AA /* FlagView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BD1BC515DB2D5A00E763AA /* FlagView.m */; };
+		E1BD1BC815DB2D5A00E763AA /* FlagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1BD1BC615DB2D5A00E763AA /* FlagView.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E1BD1BE515DDDCFC00E763AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1BD1BE015DDDCFC00E763AA /* FactualSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2559158B13F39D7300EF5CDC;
+			remoteInfo = FactualSDK;
+		};
+		E1BD1BE715DDDCFC00E763AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1BD1BE015DDDCFC00E763AA /* FactualSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CAA19F4D15B4990B002A3056;
+			remoteInfo = FactualSDKTests;
+		};
+		E1BD1BEC15DDDD5300E763AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1BD1BE015DDDCFC00E763AA /* FactualSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2559158A13F39D7300EF5CDC;
+			remoteInfo = FactualSDK;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -69,6 +95,10 @@
 		7E3705A511CAC39100F5DB11 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Images/Icon@2x.png"; sourceTree = "<group>"; };
 		7E3705A611CAC39100F5DB11 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iTunesArtwork.png; path = Images/iTunesArtwork.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1BD1BC415DB2D5A00E763AA /* FlagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagView.h; sourceTree = "<group>"; };
+		E1BD1BC515DB2D5A00E763AA /* FlagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagView.m; sourceTree = "<group>"; };
+		E1BD1BC615DB2D5A00E763AA /* FlagView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlagView.xib; sourceTree = "<group>"; };
+		E1BD1BE015DDDCFC00E763AA /* FactualSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FactualSDK.xcodeproj; path = "../factual-ios-sdk/FactualSDK.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +153,8 @@
 		29B97315FDCFA39411CA2CEA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E1BD1BC415DB2D5A00E763AA /* FlagView.h */,
+				E1BD1BC515DB2D5A00E763AA /* FlagView.m */,
 				251D560A14D9DA5600FE265A /* CLLocation (Strings).h */,
 				251D560B14D9DA5600FE265A /* CLLocation (Strings).m */,
 				251E215114D5EB9700E265FE /* QueryPreferences.h */,
@@ -144,8 +176,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E1BD1BE015DDDCFC00E763AA /* FactualSDK.xcodeproj */,
 				7E3704FC11CAA35A00F5DB11 /* Images */,
 				539168AE0DCFA64400D8C6CB /* MainWindow.xib */,
+				E1BD1BC615DB2D5A00E763AA /* FlagView.xib */,
 				251D561714DA525900FE265A /* QueryPreferences.xib */,
 				251D561514DA525900FE265A /* LatLngSelector.xib */,
 				251D561314DA525900FE265A /* DetailView.xib */,
@@ -177,6 +211,15 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		E1BD1BE115DDDCFC00E763AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1BD1BE615DDDCFC00E763AA /* libFactualSDK.a */,
+				E1BD1BE815DDDCFC00E763AA /* FactualSDKTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,6 +234,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E1BD1BED15DDDD5300E763AA /* PBXTargetDependency */,
 			);
 			name = TableSearch;
 			productName = foo;
@@ -215,12 +259,35 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Toolbar */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E1BD1BE115DDDCFC00E763AA /* Products */;
+					ProjectRef = E1BD1BE015DDDCFC00E763AA /* FactualSDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* TableSearch */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E1BD1BE615DDDCFC00E763AA /* libFactualSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFactualSDK.a;
+			remoteRef = E1BD1BE515DDDCFC00E763AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E1BD1BE815DDDCFC00E763AA /* FactualSDKTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FactualSDKTests.octest;
+			remoteRef = E1BD1BE715DDDCFC00E763AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -239,6 +306,7 @@
 				251D561B14DA525900FE265A /* QueryPreferences.xib in Resources */,
 				251D561E14DA529000FE265A /* 01-refresh.png in Resources */,
 				251D561F14DA529000FE265A /* 20-gear2.png in Resources */,
+				E1BD1BC815DB2D5A00E763AA /* FlagView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,10 +324,19 @@
 				251E215414D5EB9700E265FE /* QueryPreferences.m in Sources */,
 				25AB20CE14D8041D0013AE62 /* LatLngSelector.m in Sources */,
 				251D560C14D9DA5600FE265A /* CLLocation (Strings).m in Sources */,
+				E1BD1BC715DB2D5A00E763AA /* FlagView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E1BD1BED15DDDD5300E763AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FactualSDK;
+			targetProxy = E1BD1BEC15DDDD5300E763AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		251D561314DA525900FE265A /* DetailView.xib */ = {

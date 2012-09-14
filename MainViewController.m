@@ -251,7 +251,6 @@
       [((NSNumber*)[_prefs valueForKey:PREFS_LONGITUDE]) doubleValue]
     };
     
-      
     // set geo filter 
     [queryObject setGeoFilter:coordinate 
                radiusInMeters:[((NSNumber*)[_prefs valueForKey:PREFS_RADIUS]) doubleValue]];
@@ -293,9 +292,7 @@
   }
   
   // figure out table to use ... 
-  int selectedTableIndex = [[_prefs valueForKey:PREFS_FACTUAL_TABLE] intValue];
-  
-  NSString* tableName = (selectedTableIndex == 0)?@"global" : @"restaurants-us";
+  NSString* tableName = [self currentTable];
   
   // mark start time
   _requestStartTime = [[NSDate date] timeIntervalSince1970];
@@ -303,6 +300,10 @@
   // start the request ... 
   _activeRequest = [[[AppDelegate getAPIObject] queryTable:tableName optionalQueryParams:queryObject withDelegate:self] retain];
   
+}
+
+- (NSString*) currentTable {
+    return @"us-sandbox";
 }
 
 - (void) doEditPreferences:(id)sender { 
@@ -378,6 +379,7 @@
     FactualRow* row = [self.queryResult.rows objectAtIndex:indexPath.row];
     if (row != nil) { 
       DetailView *detailView = [[DetailView alloc] initWithNibNameAndRow:@"DetailView" bundle:nil row:row];
+      
       [self.navigationController pushViewController:detailView animated:YES];
       [detailView release];
     }

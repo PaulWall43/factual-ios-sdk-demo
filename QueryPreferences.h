@@ -17,6 +17,7 @@ extern NSString * const PREFS_TRACKING_ENABLED;
 extern NSString * const PREFS_LATITUDE;
 extern NSString * const PREFS_LONGITUDE;
 extern NSString * const PREFS_RADIUS;
+extern NSString * const PREFS_OFFSET;
 
 extern NSString * const PREFS_LOCALITY_FILTER_ENABLED;
 extern NSString * const PREFS_LOCALITY_FILTER_TYPE;
@@ -24,6 +25,7 @@ extern NSString * const PREFS_LOCALITY_FILTER_TEXT;
 
 extern NSString * const PREFS_CATEGORY_FILTER_ENABLED;
 extern NSString * const PREFS_CATEGORY_FILTER_TYPE;
+extern NSString* tableNames[];
 
 
 @interface QueryPreferences : UITableViewController<UIPickerViewDataSource,UIPickerViewDelegate> { 

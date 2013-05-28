@@ -11,12 +11,16 @@
 
 NSString * const PREFS_FACTUAL_TABLE = @"factual_table";
 NSString * const SANDBOX_TABLE_DESC = @"US POI Sandbox";
+NSString * const PLACES_TABLE_DESC = @"Places";
+NSString * const RESTAURANTS_TABLE_DESC = @"US Restaurants";
+
 
 NSString * const PREFS_GEO_ENABLED = @"enable_geo";
 NSString * const PREFS_TRACKING_ENABLED = @"enable_track";
 NSString * const PREFS_LATITUDE = @"lat";
 NSString * const PREFS_LONGITUDE = @"lng";
 NSString * const PREFS_RADIUS = @"radius";
+NSString * const PREFS_OFFSET = @"offset";
 
 NSString * const PREFS_LOCALITY_FILTER_ENABLED = @"enable_locality";
 NSString * const PREFS_LOCALITY_FILTER_TYPE = @"locality_type";
@@ -46,6 +50,11 @@ static NSString* topLevelCategories[] = {
   @"Shopping",
   @"Sports & Recreation ",
   @"Travel & Tourism"
+};
+
+NSString* tableNames[] = {
+    @"places",
+    @"us-sandbox"
 };
 
 @implementation QueryPreferences
@@ -249,13 +258,13 @@ static NSString* topLevelCategories[] = {
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 4;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   if (section == 0) { 
-    return 1;
+    return 2;
   }
   else { 
     return 1;
@@ -277,12 +286,33 @@ static NSString* topLevelCategories[] = {
       
     cell.accessoryType = UITableViewCellAccessoryNone;
 
+    cell.textLabel.text = tableNames[indexPath.row];
+    if (selectedTableIndex == indexPath.row)
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+      /*
     if (indexPath.row == 0) { 
-      cell.textLabel.text = SANDBOX_TABLE_DESC;
+      cell.textLabel.text = @"places";
       if (selectedTableIndex == 0) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
       }
+    } else if (indexPath.row == 1) {
+          cell.textLabel.text = @"restaurants";
+          if (selectedTableIndex == 1) {
+              cell.accessoryType = UITableViewCellAccessoryCheckmark;
+          }
+    } else if (indexPath.row == 2) {
+          cell.textLabel.text = @"global";
+          if (selectedTableIndex == 2) {
+              cell.accessoryType = UITableViewCellAccessoryCheckmark;
+          }
+    } else if (indexPath.row == 3) {
+        cell.textLabel.text = @"us-sandbox";
+        if (selectedTableIndex == 3) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     }
+       */
+      
     return cell;
   }
   else if (indexPath.section == 1) { 

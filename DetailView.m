@@ -8,7 +8,14 @@
 
 #import "DetailView.h"
 #import "FlagView.h"
+#import "EditWebView.h"
+#import <MapKit/MapKit.h>
 
+@interface DetailAnnotation : MKPointAnnotation
+@end
+
+@implementation DetailAnnotation
+@end
 
 @implementation DetailView
 
@@ -53,6 +60,20 @@
 
 }
 
+- (void) editRowHandler
+{
+    //NSURL *url = [NSURL URLWithString:@"http://www.google.com"];
+    //[[UIApplication sharedApplication] openURL:url];
+    
+    
+    EditWebView *webView = [[EditWebView alloc] init];
+    
+    [self.navigationController pushViewController:webView animated:YES];
+    //[webView release];
+    
+    //[_viewWeb loadRequest:requestObj];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -63,14 +84,64 @@
         [self.tableView reloadData];
     }
     
-    UIBarButtonItem *flagButton = [[UIBarButtonItem alloc] initWithTitle:@"Flag"
+    UIBarButtonItem *flagButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
                 style:UIBarButtonItemStylePlain 
-                target:self 
-                action:@selector(flag:)];
+                target:self
+                action:@selector(editRowHandler)];
+        
+    //action:@selector(edit:)];
     flagButton.tintColor = [UIColor redColor];
     [[self navigationItem] setRightBarButtonItem:flagButton];
     [flagButton release];
+    
+    
+    UILabel *label;
+    label = (UILabel *)[self.view viewWithTag:1];
+    label.text = [NSString stringWithFormat:@"%@", [self.row valueForName:@"name"]];
+
+    label = (UILabel *)[self.view viewWithTag:2];
+    NSArray *labels = [self.row valueForName:@"category_labels"];
+    if (labels != nil && [labels count] > 0) {
+        NSString *labelStr = [[labels objectAtIndex: 0] componentsJoinedByString:@" > "];
+        label.text = [NSString stringWithFormat:@"%@",labelStr];
+    } else {
+        label.text = @"No category";
+    }
+
+    label = (UILabel *)[self.view viewWithTag:3];
+    label.text = [NSString stringWithFormat:@"%@ %@", [self.row valueForName:@"address"], [self.row valueForName:@"address_extended"]];
+
+    label = (UILabel *)[self.view viewWithTag:4];
+    label.text = [NSString stringWithFormat:@"%@, %@ %@, %@", [self.row valueForName:@"locality"], [self.row valueForName:@"region"], [self.row valueForName:@"postcode"], [self.row valueForName:@"country"]];
+    
+    self.mapView =  (MKMapView *)[self.view viewWithTag:5];
+    self.tableView =  (UITableView *)[self.view viewWithTag:6];
+    
+    self.mapView.showsUserLocation = YES;
+    
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.005;
+    span.longitudeDelta = 0.005;
+    CLLocationCoordinate2D location;
+    location.latitude = [[self.row valueForName:@"latitude"] doubleValue];
+    location.longitude = [[self.row valueForName:@"longitude"] doubleValue];
+    region.span = span;
+    region.center = location;
+    [self.mapView setRegion:region animated:YES];
+    
+    DetailAnnotation *point = [[DetailAnnotation alloc] init];
+    CLLocationDegrees latitude = [[self.row valueForName:@"latitude"] doubleValue];
+    CLLocationDegrees longitude = [[self.row valueForName:@"longitude"] doubleValue];
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = latitude;
+    coordinate.longitude = longitude;
+    point.coordinate = coordinate;
+    point.title = [self.row valueForName:@"name"];
+    [self.mapView addAnnotation:point];
+
 }
+
 
 - (void)viewDidUnload
 {

@@ -9,9 +9,10 @@
 
 #import <FactualSDK/FactualAPI.h>
 #import <FactualSDK/FactualQuery.h>
+#import <MapKit/MapKit.h>
 
-@interface MainViewController : UITableViewController 
-  <UISearchDisplayDelegate, UISearchBarDelegate,FactualAPIDelegate>
+@interface MainViewController : UIViewController
+  <UISearchDisplayDelegate, UISearchBarDelegate,FactualAPIDelegate,UITableViewDelegate, UITableViewDataSource>
 {
 	// The saved state of the search UI if a memory warning removed the view.
   NSString		*_savedSearchTerm;
@@ -30,6 +31,10 @@
   NSString* _gpsStatusTxt;
   NSString* _apiStatusTxt;
   BOOL _refreshRequired;
+  BOOL _mergeResults;
+  CLLocation* _locationOverride;
+  BOOL _ignoreLoadMore;
+
 }
 
 @property (nonatomic)         NSMutableDictionary* prefs;
@@ -37,9 +42,14 @@
 @property (nonatomic) BOOL    searchWasActive;
 @property (nonatomic,retain)  UISearchBar* searchBar;
 @property (nonatomic,retain)  FactualQueryResult* queryResult;
+@property(nonatomic,retain) UITableView *tableView;
+
+@property(nonatomic,retain) MKMapView *mapView;
            
 -(IBAction) doQuery:(id) sender;
 -(IBAction) doEditPreferences:(id) sender;
+
 -(NSString*) currentTable;
 
 @end
+

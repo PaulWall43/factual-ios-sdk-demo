@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <FactualSDK/FactualAPI.h>
+#import <MapKit/MapKit.h>
 
 
-@interface DetailView : UITableViewController {
+@interface DetailView : UIViewController<UITableViewDelegate,UITableViewDataSource> {
   NSArray* _columns;
 }
 
+@property(nonatomic,retain) UITableView *tableView;
+@property(nonatomic,retain) MKMapView *mapView;
 @property (nonatomic, retain) FactualRow *row;
 
 -(id)initWithNibNameAndRow:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil row:(FactualRow*) row;

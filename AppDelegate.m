@@ -33,10 +33,9 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-  #error Please specify your API Key and Secret to build the project.
   // initialize the factual api object ... 
   _apiObject = [[FactualAPI alloc] initWithAPIKey:@"" secret:@""];
-	
+    _apiObject.debug = true;
 	// Create and configure the main view controller.
 	mainViewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
   
@@ -77,9 +76,29 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
-  
+    BOOL requiresRefresh = false;
+    if (_currentLocation == nil) {
+        requiresRefresh = true;
+    }
   [_currentLocation release];
   _currentLocation = [newLocation copy];
+    
+  if (requiresRefresh) {
+      
+      MKCoordinateRegion region;
+      MKCoordinateSpan span;
+      span.latitudeDelta = 0.005;
+      span.longitudeDelta = 0.005;
+      CLLocationCoordinate2D location;
+      location.latitude = _currentLocation.coordinate.latitude;
+      location.longitude = _currentLocation.coordinate.longitude;
+      region.span = span;
+      region.center = location;
+      [mainViewController.mapView setRegion:region animated:YES];
+    [mainViewController updateQueryLocation];
+    [mainViewController doQuery:nil];
+  }
+    
 }
 
 

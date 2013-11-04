@@ -63,8 +63,8 @@
                     
   [_prefs setValue:[NSNumber numberWithBool:YES ] forKey:PREFS_GEO_ENABLED];
   [_prefs setValue:[NSNumber numberWithBool:YES ] forKey:PREFS_TRACKING_ENABLED];
-  [_prefs setValue:[NSNumber numberWithDouble:35.059] forKey:PREFS_LATITUDE];
-  [_prefs setValue:[NSNumber numberWithDouble:-119.418] forKey:PREFS_LONGITUDE];
+  [_prefs setValue:[NSNumber numberWithDouble:34.059] forKey:PREFS_LATITUDE];
+  [_prefs setValue:[NSNumber numberWithDouble:-118.418] forKey:PREFS_LONGITUDE];
   [_prefs setValue:[NSNumber numberWithDouble:5000.0] forKey:PREFS_RADIUS];
   [_prefs setValue:[NSNumber numberWithDouble:0] forKey:PREFS_OFFSET];
   
@@ -223,11 +223,13 @@ didChangeUserTrackingMode:(MKUserTrackingMode)mode
        animated:(BOOL)animated
 {
     NSLog(@"CHanging tracking mode");
+    if (mode == MKUserTrackingModeFollow) {
      _locationOverride = nil;
      [self doQuery:nil];
+    }
 }
 
-- (void)viewDidLoad {	
+- (void)viewDidLoad {
 
   _gpsStatusTxt = @"";
   _apiStatusTxt = @"";
@@ -281,10 +283,9 @@ didChangeUserTrackingMode:(MKUserTrackingMode)mode
   [self.view addSubview:self.tableView];
     
   [self createBottomToolbar];
-
-    /*
-  */
     
+  [self doQuery:nil];
+
 }
 
 
@@ -305,8 +306,10 @@ didChangeUserTrackingMode:(MKUserTrackingMode)mode
         } else if ([AppDelegate getDelegate].currentLocation != nil) { 
             _queryLocation = [[AppDelegate getDelegate].currentLocation copy];
         }
-        [_prefs setValue:[NSNumber numberWithDouble:_queryLocation.coordinate.latitude] forKey:PREFS_LATITUDE];
-        [_prefs setValue:[NSNumber numberWithDouble:_queryLocation.coordinate.longitude] forKey:PREFS_LONGITUDE];
+        if (_queryLocation.coordinate.latitude != 0 && _queryLocation.coordinate.longitude != 0) {
+            [_prefs setValue:[NSNumber numberWithDouble:_queryLocation.coordinate.latitude] forKey:PREFS_LATITUDE];
+            [_prefs setValue:[NSNumber numberWithDouble:_queryLocation.coordinate.longitude] forKey:PREFS_LONGITUDE];
+        }
       gpsStale = NO;
     }
     //if location is still NULL, pick it up from prefs (if possible)
@@ -342,12 +345,6 @@ didChangeUserTrackingMode:(MKUserTrackingMode)mode
 - (void)doQuery:(id) sender { 
 
   _refreshRequired = NO;
-    
-  if (!_mergeResults) {
-    self.queryResult = nil;
-  }
-  
-  [self.tableView reloadData];
   
   [self updateQueryLocation];
   

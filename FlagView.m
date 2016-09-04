@@ -18,7 +18,7 @@
 @property (retain, nonatomic) IBOutlet UIView *mainView;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (retain, nonatomic) IBOutlet UIPickerView *reasonPicker;
-@property (retain, nonatomic) IBOutlet UITextField *description;
+@property (retain, nonatomic) IBOutlet UITextField *textFieldDescription;
 @property (retain, nonatomic) FactualAPIRequest* apiRequest; 
 @property (retain, nonatomic) IBOutlet UIView *grayScreen;
 - (IBAction)backgroundTouch:(id)sender;
@@ -95,10 +95,10 @@ static NSString* flagReasons[] = {
     NSInteger selectedRow = [[self reasonPicker] selectedRowInComponent:0];
     
     FactualRowMetadata *flagMetadata = [FactualRowMetadata metadata:@"TableViewUser"];
-    flagMetadata.comment = description.text;
+    flagMetadata.comment = _textFieldDescription.text;
     self.apiRequest = [[factual flagProblem:selectedRow tableId:table factualId:[row rowId] metadata:flagMetadata withDelegate:self] retain];
     
-    [description resignFirstResponder];
+    [_textFieldDescription resignFirstResponder];
     
     [self.navigationController.view addSubview:self.grayScreen];
     [activityIndicator startAnimating];

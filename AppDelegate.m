@@ -49,7 +49,7 @@
 	[navigationController release];
 	
 	// Configure and display the window.
-	[window addSubview:navController.view];
+    [self.window setRootViewController:navController]; //FIRST CHANGE
 	[window makeKeyAndVisible];
 }
 
